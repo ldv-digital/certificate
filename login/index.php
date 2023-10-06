@@ -134,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <input type="submit" class="btn btn-primary form-control" name="submit" value="Log In">
             </div>
             <p class="mb-0">Don't have an account ? <a href="../register">Sign Up</a></p>
-            
+            teste pipeline
           </form>
           <!-- form ends here -->
         </div>
