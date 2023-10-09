@@ -144,33 +144,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="row min-vh-100 justify-content-center align-items-center">
       <div class="col-lg-5">
         <div class="form-wrap border rounded p-4">
-          <h1>Sign up</h1>
-          <p>Please fill this form to register</p>
+          <h1>Cadastre-se</h1>
+          <p>Por favor preencha este formulário para se cadastrar</p>
           <!-- form starts here -->
           <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
             <div class="mb-3">
-              <label for="username" class="form-label">Username</label>
+              <label for="username" class="form-label">Nome de Usuário</label>
               <input type="text" class="form-control" name="username" id="username" value="<?= $username; ?>">
               <small class="text-danger"><?= $username_err; ?></small>
             </div>
             <div class="mb-3">
-              <label for="email" class="form-label">Email Address</label>
+              <label for="email" class="form-label">Email</label>
               <input type="email" class="form-control" name="email" id="email" value="<?= $email; ?>">
               <small class="text-danger"><?= $email_err; ?></small>
             </div>
             <div class="mb-2">
-              <label for="password" class="form-label">Password</label>
+              <label for="password" class="form-label">Senha</label>
               <input type="password" class="form-control" name="password" id="password" value="<?= $password; ?>">
               <small class="text-danger"><?= $password_err; ?></small>
             </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="togglePassword">
-              <label for="togglePassword" class="form-check-label">Show Password</label>
+              <label for="togglePassword" class="form-check-label">Ver senha</label>
             </div>
             <div class="mb-3">
-              <input type="submit" class="btn btn-primary form-control" name="submit" value="Sign Up">
+              <input type="submit" class="btn btn-primary form-control" name="submit" value="Cadastrar">
             </div>
-            <p class="mb-0">Already have an account ? <a href="../login">Log In</a></p>
+            <p class="mb-0">Já tem uma conta ? <a href="../login">Fazer Login</a></p>
           </form>
           <!-- form ends here -->
         </div>

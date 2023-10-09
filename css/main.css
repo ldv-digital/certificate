@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700&display=swap");
 
-body {
-  font-family: "Barlow Semi Condensed", sans-serif;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .alert {
@@ -11,4 +13,157 @@ body {
 .form-wrap h1,
 .form-wrap .form-label {
   font-weight: 600;
+}
+
+
+html,body{
+  height: 100%;
+}
+
+body{
+  font-family: "Barlow Semi Condensed", sans-serif;
+  background: #efefef;
+  font: 14px;
+}
+
+a{
+  text-decoration: none;
+}
+
+ul{
+  list-style: none;
+}
+
+button{
+  cursor: pointer;
+}
+
+  
+@keyframes is-rotating {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+button:disabled {
+  opacity: 0.6; 
+  cursor: not-allowed; 
+}
+
+/*Header*/
+
+.sidebar{
+  margin: 0;
+  padding: 0;
+  background: #0d6efd;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  width: 200px;
+}
+
+.sidebar div{
+  background: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 150px;
+  border-right: 1px solid rgba(128, 128, 128, 0.534);
+}
+
+.sidebar div{
+  padding-top: 30px;
+}
+
+.sidebar div img{
+  width: 200px;
+  height: 120px;
+  display: block;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+.sidebar a{
+  display: block;
+  padding: 16px;
+  display: flex;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.849);
+  flex-direction: row;
+  align-items: center;
+  transition: .2s;
+  font-size: 1.1rem;
+  font-weight: 600;
+  
+}
+
+.btnClosed{
+  display: block;
+  padding: 16px;
+  display: flex;
+  text-decoration: none;
+  color: rgba(255,255,255, 0.7);
+  flex-direction: row;
+  align-items: center;
+  transition: .2s;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sidebar a .icons{
+  margin-right: 0.5em;
+  width: 25px;
+}
+
+.sidebar a:hover{
+  background:linear-gradient(#0a58ca, #04419c) ;
+  color: #fff;
+}
+
+.content{
+  margin-left: 200px;
+  padding: 1px 16px;
+}
+
+.btnClosed:hover{
+  background: linear-gradient(#fa0707cc, #bd0101cc)
+  !important;
+  color: #fff !important;
+}
+
+@media(max-width: 700px){
+  .sidebar{
+      width: 100%;
+      height: auto;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .content{
+      margin-left: 0;
+  }
+
+  .sidebar a{
+      float: left;
+  }
+  .sidebar div{
+      display: none;
+  }
+
+  .sidebar a .icons{
+      display: none;
+  }
+}
+
+@media(max-width: 400px){
+  .sidebar a{
+      text-align: center;
+      float: none;
+  }
+
+  .sidebar a .icons{
+      display: none;
+  }
 }
