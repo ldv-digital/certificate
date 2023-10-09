@@ -112,29 +112,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         ?>
         <div class="form-wrap border rounded p-4">
-          <h1>Log In</h1>
-          <p>Please login to continue</p>
+          <h1>Entrar</h1>
+          <p>Por favor faça o login para entrar</p>
           <!-- form starts here -->
           <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
             <div class="mb-3">
-              <label for="user_login" class="form-label">Email or username</label>
+              <label for="user_login" class="form-label">Email</label>
               <input type="text" class="form-control" name="user_login" id="user_login" value="<?= $user_login; ?>">
               <small class="text-danger"><?= $user_login_err; ?></small>
             </div>
             <div class="mb-2">
-              <label for="password" class="form-label">Password</label>
+              <label for="password" class="form-label">Senha</label>
               <input type="password" class="form-control" name="user_password" id="password">
               <small class="text-danger"><?= $user_password_err; ?></small>
             </div>
             <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="togglePassword">
-              <label for="togglePassword" class="form-check-label">Show Password</label>
+              <label for="togglePassword" class="form-check-label">Ver senha</label>
             </div>
             <div class="mb-3">
-              <input type="submit" class="btn btn-primary form-control" name="submit" value="Log In">
+              <input type="submit" class="btn btn-primary form-control" name="submit" value="Entrar">
             </div>
-            <p class="mb-0">Don't have an account ? <a href="../register">Sign Up</a></p>
-            teste pipeline
+            <p class="mb-0">Não tem uma conta? <a href="../register">Inscrever-se</a></p>
           </form>
           <!-- form ends here -->
         </div>

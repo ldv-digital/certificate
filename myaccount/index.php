@@ -23,16 +23,40 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 </head>
 
 <body>
-  <div class="container">
+
+<div class="sidebar">
+      <div>
+        <img
+        src="../img/imgLogo.png"
+          alt="foto do usuário"
+        />
+      </div>
+      <a href="../certificates">
+        <img class="icons" src="../img/iconHome.png"/>
+        Certificados
+      </a>
+
+      <a href="../myaccount/">
+        <img class="icons" src="../img/iconPerfil.png"/>
+        Perfil
+      </a>
+      
+      
+      <a href="../logout" class="btnClosed">
+        <img class="icons" src="../img/iconSair.png" />
+        Sair
+      </a>
+    </div>
+  </div>
+  <div class="content">
     <div class="alert alert-success my-5">
       Welcome ! You are now signed in to your account.
     </div>
-    <!-- User profile -->
+    
     <div class="row justify-content-center">
       <div class="col-lg-5 text-center">
         <img src="../img/blank-avatar.jpg" class="img-fluid rounded" alt="User avatar" width="180">
-        <h4 class="my-4">Hello, <?= htmlspecialchars($_SESSION["username"]); ?></h4>
-        <a href="../logout" class="btn btn-primary">Log Out</a>
+        <h4 class="my-4">Olá, <?= htmlspecialchars($_SESSION["username"]); ?></h4>
       </div>
     </div>
   </div>
