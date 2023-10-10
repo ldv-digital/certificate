@@ -7,6 +7,63 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
   echo "<script>" . "window.location.href='../login';" . "</script>";
   exit;
 }
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  $target_dir = "../uploads/";
+  $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+  $uploadOk = 1;
+  $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+
+
+  $timeNOw = time();
+  $mageName = "image-{$timeNOw}.{$imageFileType}";
+
+  $target_file = $target_dir . $mageName;
+  $uploadOk = 1;
+
+
+
+
+  // Check if file already exists
+  if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+  }
+
+  // Check file size
+  if ($_FILES["fileToUpload"]["size"] > 500000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+  }
+
+  // Allow certain file formats
+  if (
+    $imageFileType != "jpg"
+    && $imageFileType != "png"
+    && $imageFileType != "jpeg"
+    && $imageFileType != "pdf"
+    && $imageFileType != "webp"
+  ) {
+    echo "Sorry, only JPG, JPEG, PNG, WEBP & PDF files are allowed.";
+    $uploadOk = 0;
+  }
+
+  // Check if $uploadOk is set to 0 by an error
+  if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+    // if everything is ok, try to upload file
+  } else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+      echo "The file " . $mageName . " has been uploaded.";
+    } else {
+      echo "Sorry, there was an error uploading your file.";
+    }
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -24,35 +81,32 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 
 <body>
 
-<div class="sidebar">
-      <div>
-        <img
-          src="../img/imgLogo.png"
-          alt="foto do usuário"
-        />
-      </div>
-      <a href="../certificates">
-        <img class="icons" src="../img/iconHome.png"/>
-        Certificados
-      </a>
-
-      <a href="../myaccount/">
-        <img class="icons" src="../img/iconPerfil.png"/>
-        Perfil
-      </a>
-      
-      
-      <a href="../logout" class="btnClosed">
-        <img class="icons" src="../img/iconSair.png" />
-        Sair
-      </a>
+  <div class="sidebar">
+    <div>
+      <img src="../img/imgLogo.png" alt="foto do usuário" />
     </div>
+    <a href="../certificates">
+      <img class="icons" src="../img/iconHome.png" />
+      Certificados
+    </a>
+
+    <a href="../myaccount/">
+      <img class="icons" src="../img/iconPerfil.png" />
+      Perfil
+    </a>
+
+
+    <a href="../logout" class="btnClosed">
+      <img class="icons" src="../img/iconSair.png" />
+      Sair
+    </a>
+  </div>
   </div>
   <div class="content">
     <div class="alert alert-success my-5">
       Welcome ! You are now signed in to your account...
     </div>
-   
+
     <div class="row justify-content-center">
       <div class="col-lg-5 text-center">
         <img src="../img/blank-avatar.jpg" class="img-fluid rounded" alt="User avatar" width="180">
@@ -61,6 +115,13 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
       </div>
     </div>
   </div>
+
+
+  <form method="post" enctype="multipart/form-data">
+    Select image to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+  </form>
 </body>
 
 </html>
