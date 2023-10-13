@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700&display=swap");
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -16,29 +16,29 @@
 }
 
 
-html,body{
+html, body {
   height: 100%;
 }
 
-body{
+body {
   font-family: "Barlow Semi Condensed", sans-serif;
   background: #efefef;
   font: 14px;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-ul{
+ul {
   list-style: none;
 }
 
-button{
+button {
   cursor: pointer;
 }
 
-  
+
 @keyframes is-rotating {
   to {
     transform: rotate(1turn);
@@ -46,13 +46,13 @@ button{
 }
 
 button:disabled {
-  opacity: 0.6; 
-  cursor: not-allowed; 
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /*Header*/
 
-.sidebar{
+.sidebar {
   margin: 0;
   padding: 0;
   background: #0d6efd;
@@ -62,7 +62,7 @@ button:disabled {
   width: 200px;
 }
 
-.sidebar div{
+.sidebar div {
   background: #fff;
   background-position: center;
   background-repeat: no-repeat;
@@ -71,11 +71,11 @@ button:disabled {
   border-right: 1px solid rgba(128, 128, 128, 0.534);
 }
 
-.sidebar div{
+.sidebar div {
   padding-top: 30px;
 }
 
-.sidebar div img{
+.sidebar div img {
   width: 200px;
   height: 120px;
   display: block;
@@ -83,7 +83,7 @@ button:disabled {
   object-fit: cover;
 }
 
-.sidebar a{
+.sidebar a {
   display: block;
   padding: 16px;
   display: flex;
@@ -94,15 +94,15 @@ button:disabled {
   transition: .2s;
   font-size: 1.1rem;
   font-weight: 600;
-  
+
 }
 
-.btnClosed{
+.btnClosed {
   display: block;
   padding: 16px;
   display: flex;
   text-decoration: none;
-  color: rgba(255,255,255, 0.7);
+  color: rgba(255, 255, 255, 0.7);
   flex-direction: row;
   align-items: center;
   transition: .2s;
@@ -111,59 +111,77 @@ button:disabled {
   cursor: pointer;
 }
 
-.sidebar a .icons{
+.sidebar a .icons {
   margin-right: 0.5em;
   width: 25px;
 }
 
-.sidebar a:hover{
-  background:linear-gradient(#0a58ca, #04419c) ;
+.sidebar a:hover {
+  background: linear-gradient(#0a58ca, #04419c);
   color: #fff;
 }
 
-.content{
+.content {
   margin-left: 200px;
   padding: 1px 16px;
 }
 
-.btnClosed:hover{
-  background: linear-gradient(#fa0707cc, #bd0101cc)
-  !important;
+.btnClosed:hover {
+  background: linear-gradient(#fa0707cc, #bd0101cc) !important;
   color: #fff !important;
 }
 
-@media(max-width: 700px){
-  .sidebar{
-      width: 100%;
-      height: auto;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-  .content{
-      margin-left: 0;
+@media(max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .sidebar a{
-      float: left;
-  }
-  .sidebar div{
-      display: none;
+  .content {
+    margin-left: 0;
   }
 
-  .sidebar a .icons{
-      display: none;
+  .sidebar a {
+    float: left;
+  }
+
+  .sidebar div {
+    display: none;
+  }
+
+  .sidebar a .icons {
+    display: none;
   }
 }
 
-@media(max-width: 400px){
-  .sidebar a{
-      text-align: center;
-      float: none;
+@media(max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
   }
 
-  .sidebar a .icons{
-      display: none;
+  .sidebar a .icons {
+    display: none;
   }
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
