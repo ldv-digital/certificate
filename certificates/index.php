@@ -1,4 +1,7 @@
 <?php
+# Include connection
+require_once "../config.php";
+
 # Initialize the session
 session_start();
 
@@ -22,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $mageName = "image-{$timeNOw}.{$imageFileType}";
 
   $target_file = $target_dir . $mageName;
-  $uploadOk = 1;
+
 
 
 
@@ -56,13 +59,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Sorry, your file was not uploaded.";
     // if everything is ok, try to upload file
   } else {
+
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
       echo "The file " . $mageName . " has been uploaded.";
+
+
+
+
+      //success upload
+      if ((isset($_SESSION["id"]) && !empty($_SESSION["id"])) && !empty($mageName)) {
+        $idUser = $_SESSION["id"];
+
+        # Prepare an insert statement
+        $sql = "INSERT INTO `certificates`(`id_user`, `image`) VALUES ('$idUser','$mageName')";
+
+        if ($stmt = mysqli_prepare($link, $sql)) {
+          # Execute the prepared statement
+          if (mysqli_stmt_execute($stmt)) {
+            echo "sucesso ao cadastrar no banco";
+          } else {
+            echo "erro ao cadastrar no banco";
+          }
+
+          # Close statement
+          mysqli_stmt_close($stmt);
+        }
+
+        # Close connection
+        mysqli_close($link);
+      }
+      //success upload
+
+
     } else {
       echo "Sorry, there was an error uploading your file.";
     }
   }
 }
+
+
+$myCertificates = [];
+if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
+  $idUser = $_SESSION["id"];
+  $myCertificates = $link->query("SELECT * FROM certificates WHERE id_user = $idUser");
+}
+
+//listar certificados
+
+
 
 ?>
 
@@ -114,14 +158,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h4 class="my-4">Id, <?= htmlspecialchars($_SESSION["id"]); ?></h4>
       </div>
     </div>
+
+
+
+    <form method="post" enctype="multipart/form-data">
+      Select image to upload:
+      <input type="file" name="fileToUpload" id="fileToUpload">
+      <input type="submit" value="Upload Image" name="submit">
+    </form>
+
+
+
+
+
+    <table>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>action</th>
+      </tr>
+
+      <?php foreach ($myCertificates as $item) : ?>
+        <tr>
+          <td><?= $item['id'] ?></td>
+          <td><img src="../uploads/<?= $item['image'] ?>"><?= $item['image'] ?></td>
+          <td>remover</td>
+        </tr>
+      <?php endforeach; ?>
+    </table>
+
+
   </div>
 
-
-  <form method="post" enctype="multipart/form-data">
-    Select image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
-  </form>
 </body>
 
 </html>
