@@ -1,12 +1,23 @@
 <?php
-# Initialize the session
-session_start();
 
-# If user is not logged in then redirect him to login page
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
-  echo "<script>" . "window.location.href='./login';" . "</script>";
-  exit;
+# Include connection
+require_once "./config.php";
+
+
+$certificate = "";
+if (isset($_SERVER['REQUEST_URI']) && !empty($_SERVER['REQUEST_URI'])) {
+  $uri = $_SERVER['REQUEST_URI'];
+  $uri = substr($uri, 1);
+  $uri = base64_decode($uri);
+
+  $myCertificates = $link->query("SELECT image FROM certificates WHERE id = '$uri'");
+  mysqli_close($link);
+  $row = $myCertificates->fetch_assoc();
+  if (isset($row['image']) && !empty($row['image'])) {
+    $certificate = "./uploads/" . $row['image'];
+  }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -23,19 +34,49 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 </head>
 
 <body>
-  <div class="container">
-    <div class="alert alert-success my-5">
-      Welcome ! You are now signed in to your account.
-    </div>
-    <!-- User profile -->
-    <div class="row justify-content-center">
-      <div class="col-lg-5 text-center">
-        <img src="./img/blank-avatar.jpg" class="img-fluid rounded" alt="User avatar" width="180">
-        <h4 class="my-4">Hello, <?= htmlspecialchars($_SESSION["username"]); ?></h4>
-        <a href="./logout" class="btn btn-primary">Log Out</a>
+
+  <?php if ($certificate) : ?>
+    <section class="features" style="text-align: center;">
+      <div>
+        Google AdSense
       </div>
-    </div>
-  </div>
+      <div>
+        <img src="<?= $certificate ?>" alt="Certificados" />
+      </div>
+      <div>
+        Google AdSense
+      </div>
+    </section>
+  <?php endif; ?>
+  <?php if (!$certificate) : ?>
+    <section class="features">
+      <h2>Nossas Facilidades</h2>
+      <ul>
+        <li>
+          <h3>Compartilhamento Simples</h3>
+          <p>Compartilhe seus certificados facilmente no LinkedIn.</p>
+        </li>
+        <li>
+          <h3>Acesso Gratuito</h3>
+          <p>Nossa plataforma é 100% gratuita e sem custos ocultos.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="generate-link">
+      <h2>Gere seu Link para o LinkedIn</h2>
+      <p>Compartilhe seus certificados no LinkedIn em poucos passos simples:</p>
+      <ol>
+        <li>Crie sua conta em nossa plataforma.</li>
+        <li>Carregue seu certificado.</li>
+        <li>Gere um link exclusivo para o LinkedIn.</li>
+        <li>Compartilhe seu sucesso profissional com o mundo!</li>
+      </ol>
+    </section>
+
+
+  <?php endif; ?>
+
 </body>
 
 </html>
