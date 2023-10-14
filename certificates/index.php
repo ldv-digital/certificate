@@ -177,7 +177,7 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
         <tr>
           <td><?= $item['id'] ?></td>
           <td><img src="../uploads/<?= $item['image'] ?>"></td>
-          <td> <a href="/<?= base64_encode($item['id']) ?>" target="_blank">Visualizar</a> </td>
+          <td> <a href="/?id=<?= base64_encode($item['id']) ?>" target="_blank">Visualizar</a> </td>
           <td>
             <form method="post" enctype="multipart/form-data">
               <input type="hidden" name="remove-file" value="<?= $item['id'] ?>">
