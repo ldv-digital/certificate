@@ -185,3 +185,41 @@ th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+table.table-certificate img {
+  width: 96px;
+  margin: 20px;
+}
+
+
+.features {
+  padding: 2rem;
+}
+
+.features h2 {
+  font-size: 1.5rem;
+}
+
+.features ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+}
+
+.features li {
+  text-align: center;
+  flex: 1;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #f4f4f4;
+}
+
+.generate-link {
+  background-color: #f4f4f4;
+  padding: 2rem;
+}
+
+.generate-link h2 {
+  font-size: 1.5rem;
+}
