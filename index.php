@@ -5,9 +5,8 @@ require_once "./config.php";
 
 
 $certificate = "";
-if (isset($_SERVER['REQUEST_URI']) && !empty($_SERVER['REQUEST_URI'])) {
-  $uri = $_SERVER['REQUEST_URI'];
-  $uri = substr($uri, 1);
+if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
+  $uri = $_REQUEST['id'];
   $uri = base64_decode($uri);
 
   $myCertificates = $link->query("SELECT image FROM certificates WHERE id = '$uri'");
