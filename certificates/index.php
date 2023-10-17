@@ -129,7 +129,7 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
 
   <div class="sidebar">
     <div>
-      <img src="../img/imgLogo.png" alt="foto do usuário" />
+      <img src="../img/Certificado.gif" alt="foto do usuário" />
     </div>
     <a href="../certificates">
       <img class="icons" src="../img/iconHome.png" />
