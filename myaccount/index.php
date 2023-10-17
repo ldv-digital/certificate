@@ -27,7 +27,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
 <div class="sidebar">
       <div>
         <img
-        src="../img/imgLogo.png"
+        src="../img/Certificado.gif"
           alt="foto do usuário"
         />
       </div>

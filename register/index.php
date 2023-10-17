@@ -168,7 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <label for="togglePassword" class="form-check-label">Ver senha</label>
             </div>
             <div class="mb-3">
-              <input type="submit" class="btn btn-primary form-control" name="submit" value="Cadastrar">
+              <input type="submit" class="btn btn-primary form-control button" name="submit" value="Cadastrar">
             </div>
             <p class="mb-0">Já tem uma conta ? <a href="../login">Fazer Login</a></p>
           </form>

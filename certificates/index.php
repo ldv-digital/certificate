@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <div class="sidebar">
     <div>
-      <img src="../img/imgLogo.png" alt="foto do usuário" />
+      <img src="../img/Certificado.gif" alt="foto do usuário" />
     </div>
     <a href="../certificates">
       <img class="icons" src="../img/iconHome.png" />
