@@ -109,7 +109,6 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
 //listar certificados
 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -158,7 +157,7 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
     <form method="post" enctype="multipart/form-data">
       Selecione seu Certificado:
       <input type="file" name="fileToUpload" id="fileToUpload">
-      <input type="submit" value="Upload Image" name="submit">
+      <input type="submit" value="Enviar certificado" name="submit">
     </form>
 
 
@@ -167,21 +166,42 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
 
     <table class="table-certificate">
       <tr>
-        <th>id</th>
-        <th>name</th>
+        <th>Meus Certificados</th>
         <th></th>
         <th></th>
       </tr>
 
       <?php foreach ($myCertificates as $item) : ?>
         <tr>
-          <td><?= $item['id'] ?></td>
-          <td><img src="../uploads/<?= $item['image'] ?>"></td>
-          <td> <a href="/?id=<?= base64_encode($item['id']) ?>" target="_blank">Visualizar</a> </td>
+          
+          <td>
+            <?php 
+        
+              $pos = strpos(  $item['image'], '.pdf' );
+
+              if($pos):
+            ?>
+              <iframe src="../uploads/<?= $item['image'] ?>" frameborder="0"></iframe>  
+
+
+            <?php 
+              else:
+            ?>
+
+              <img src="../uploads/<?= $item['image'] ?>">
+
+            <?php 
+              endif; 
+            ?>
+
+
+
+          </td>
+          <td> <a href="/?id=<?= base64_encode($item['id']) ?>" target="_blank" class="btn-grid">Visualizar</a> </td>
           <td>
             <form method="post" enctype="multipart/form-data">
               <input type="hidden" name="remove-file" value="<?= $item['id'] ?>">
-              <input type="submit" value="remover" name="submit">
+              <input class="btn-grid-del" type="submit" value="remover" name="submit">
             </form>
           </td>
         </tr>

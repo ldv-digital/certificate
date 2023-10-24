@@ -191,10 +191,17 @@ tr:nth-child(even) {
 }
 
 table.table-certificate img {
-  width: 96px;
-  margin: 20px;
+  width: 100px;
 }
 
+iframe{
+  width: 100px;
+}
+
+.btn-grid{
+  padding: 16px 20px;
+  background: #efefef;
+}
 
 .features {
   padding: 2rem;
