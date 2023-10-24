@@ -73,7 +73,7 @@ button:disabled {
 
 
 .sidebar div {
-  padding-top: 30px;
+  padding-top: 18px;
 }
 
 .sidebar div img {
@@ -82,8 +82,6 @@ button:disabled {
   display: block;
   margin: 0 auto;
   object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0 0 8px #0d6efd ;
 }
 
 .sidebar a {
@@ -198,9 +196,62 @@ iframe{
   width: 100px;
 }
 
-.btn-grid{
-  padding: 16px 20px;
+input:disabled{
+  cursor: not-allowed;
+}
+
+.inputEnv{
+  padding: 8px 10px;
   background: #efefef;
+  color: #000;
+  border: 0;
+}
+
+.inputEnv2{
+  padding: 8px 10px;
+  background: #efefef;
+  color: #000;
+  border: 1px solid #0d6dfd33;
+}
+
+.inputEnv2:hover{
+  background:linear-gradient(#0a58ca, #04419c) ;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+}
+
+.inputEnv:hover{
+  background:linear-gradient(#0a58ca, #04419c) ;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-grid{
+  padding: 10px 20px;
+  background: #efefef;
+  border: 1px solid #0d6dfd33;
+  color: #000;
+}
+
+.btn-grid-del{
+  padding: 7.5px 20px;
+  background: #efefef;
+  border: 1px solid #bd010138;
+  color: #000;
+}
+
+.btn-grid:hover{
+  cursor: pointer;
+  background:linear-gradient(#0a58ca, #04419c) ;
+  color: #fff;
+}
+
+.btn-grid-del:hover{
+  cursor: pointer;
+  background: linear-gradient(#fa0707cc, #bd0101cc);
+  color: #fff;
 }
 
 .features {

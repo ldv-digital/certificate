@@ -128,7 +128,7 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
 
   <div class="sidebar">
     <div>
-      <img src="../img/Certificado.gif" alt="foto do usuário" />
+      <img src="../img/imgLogo.png" alt="logo do site" />
     </div>
     <a href="../certificates">
       <img class="icons" src="../img/iconHome.png" />
@@ -156,8 +156,8 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
 
     <form method="post" enctype="multipart/form-data">
       Selecione seu Certificado:
-      <input type="file" name="fileToUpload" id="fileToUpload">
-      <input type="submit" value="Enviar certificado" name="submit">
+      <input class="inputEnv" type="file" name="fileToUpload" id="fileToUpload">
+      <input class="inputEnv2" type="submit" value="Enviar certificado" name="submit">
     </form>
 
 
@@ -201,7 +201,7 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
           <td>
             <form method="post" enctype="multipart/form-data">
               <input type="hidden" name="remove-file" value="<?= $item['id'] ?>">
-              <input class="btn-grid-del" type="submit" value="remover" name="submit">
+              <input class="btn-grid-del" type="submit" value="Remover" name="submit">
             </form>
           </td>
         </tr>
