@@ -46,7 +46,7 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
 
             if($pos):
           ?>
-            <iframe src="<?= $certificate ?>" frameborder="0"></iframe>  
+            <iframe class="iframe2" src="<?= $certificate ?>" frameborder="0"></iframe>  
           <?php 
             else:
           ?>
