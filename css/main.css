@@ -200,18 +200,34 @@ input:disabled{
   cursor: not-allowed;
 }
 
+
+.inputEnv::-webkit-file-upload-button {
+  border: none;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  margin: 0;
+}
+
 .inputEnv{
-  padding: 8px 10px;
-  background: #efefef;
-  color: #000;
+  padding: 7px 10px;
+  background:linear-gradient(#0a58ca, #04419c) ;
+  color: #fff;
   border: 0;
+}
+
+.inputEnv:hover{
+  background:linear-gradient(#04419c, #0a58ca) ;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
 }
 
 .inputEnv2{
   padding: 8px 10px;
-  background: #efefef;
+  background: #dad8d8;
   color: #000;
-  border: 1px solid #0d6dfd33;
+  border: 0;
 }
 
 .inputEnv2:hover{
@@ -221,12 +237,6 @@ input:disabled{
   cursor: pointer;
 }
 
-.inputEnv:hover{
-  background:linear-gradient(#0a58ca, #04419c) ;
-  color: #fff;
-  border: 0;
-  cursor: pointer;
-}
 
 .btn-grid{
   padding: 10px 20px;

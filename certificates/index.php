@@ -155,9 +155,8 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
     <?php endif; ?>
 
     <form method="post" enctype="multipart/form-data">
-      Selecione seu Certificado:
       <input class="inputEnv" type="file" name="fileToUpload" id="fileToUpload">
-      <input class="inputEnv2" type="submit" value="Enviar certificado" name="submit">
+      <input class="inputEnv2" type="submit" value="Enviar" name="submit">
     </form>
 
 
