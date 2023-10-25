@@ -146,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form-wrap border rounded p-4">
           <h1>Cadastre-se</h1>
           <p>Por favor preencha este formulário para se cadastrar</p>
-          <!-- form starts here -->
+          
           <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
             <div class="mb-3">
               <label for="username" class="form-label">Nome de Usuário</label>
@@ -168,11 +168,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <label for="togglePassword" class="form-check-label">Ver senha</label>
             </div>
             <div class="mb-3">
-              <input type="submit" class="btn btn-primary form-control" name="submit" value="Cadastrar">
+              <input type="submit" class="btn btn-primary form-control button" name="submit" value="Cadastrar">
             </div>
             <p class="mb-0">Já tem uma conta ? <a href="../login">Fazer Login</a></p>
           </form>
-          <!-- form ends here -->
+        
         </div>
       </div>
     </div>

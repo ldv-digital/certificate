@@ -40,7 +40,20 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
         Google AdSense
       </div>
       <div>
-        <img src="<?= $certificate ?>" alt="Certificados" />
+      <?php 
+            
+            $pos = strpos( $certificate, '.pdf' );
+
+            if($pos):
+          ?>
+            <iframe class="iframe2" src="<?= $certificate ?>" frameborder="0"></iframe>  
+          <?php 
+            else:
+          ?>
+            <img src="<?= $certificate ?>" alt="Certificados" />
+          <?php 
+            endif; 
+          ?>
       </div>
       <div>
         Google AdSense

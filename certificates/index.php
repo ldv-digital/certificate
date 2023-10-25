@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Check file size
-    if ($_FILES["fileToUpload"]["size"] > 500000) {
+    if ($_FILES["fileToUpload"]["size"] > 5000000) {
       echo "Sorry, your file is too large.";
       $uploadOk = 0;
     }
@@ -109,7 +109,6 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
 //listar certificados
 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -129,7 +128,7 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
 
   <div class="sidebar">
     <div>
-      <img src="../img/imgLogo.png" alt="foto do usuário" />
+      <img src="../img/imgLogo.png" alt="logo do site" />
     </div>
     <a href="../certificates">
       <img class="icons" src="../img/iconHome.png" />
@@ -150,38 +149,54 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
   </div>
   <div class="content">
     <?php if (isset($_REQUEST['s_msg']) && !empty($_REQUEST['s_msg'])) : ?>
-      <div class="alert alert-success my-5">
+      <div class="alert alert-success my-3">
         <?= $_REQUEST['s_msg'] ?>
       </div>
     <?php endif; ?>
 
-    <form method="post" enctype="multipart/form-data">
-      Selecione seu Certificado:
-      <input type="file" name="fileToUpload" id="fileToUpload">
-      <input type="submit" value="Upload Image" name="submit">
+    <form class="my-2" method="post" enctype="multipart/form-data">
+      <input class="inputEnv" type="file" name="fileToUpload" id="fileToUpload">
+      <input class="inputEnv2" type="submit" value="Enviar" name="submit">
     </form>
-
-
-
-
 
     <table class="table-certificate">
       <tr>
-        <th>id</th>
-        <th>name</th>
+        <th>Meus Certificados</th>
         <th></th>
         <th></th>
       </tr>
 
       <?php foreach ($myCertificates as $item) : ?>
         <tr>
-          <td><?= $item['id'] ?></td>
-          <td><img src="../uploads/<?= $item['image'] ?>"></td>
-          <td> <a href="/?id=<?= base64_encode($item['id']) ?>" target="_blank">Visualizar</a> </td>
+          
+          <td>
+            <?php 
+        
+              $pos = strpos(  $item['image'], '.pdf' );
+
+              if($pos):
+            ?>
+              <iframe class="iframe1" src="../uploads/<?= $item['image'] ?>" frameborder="0"></iframe>  
+
+
+            <?php 
+              else:
+            ?>
+
+              <img src="../uploads/<?= $item['image'] ?>">
+
+            <?php 
+              endif; 
+            ?>
+
+
+
+          </td>
+          <td> <a href="/?id=<?= base64_encode($item['id']) ?>" target="_blank" class="btn-grid">Visualizar</a> </td>
           <td>
             <form method="post" enctype="multipart/form-data">
               <input type="hidden" name="remove-file" value="<?= $item['id'] ?>">
-              <input type="submit" value="remover" name="submit">
+              <input class="btn-grid-del" type="submit" value="Remover" name="submit">
             </form>
           </td>
         </tr>

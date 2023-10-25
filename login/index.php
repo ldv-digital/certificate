@@ -4,7 +4,7 @@ session_start();
 
 # Check if user is already logged in, If yes then redirect him to index page
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
-  echo "<script>" . "window.location.href='../'" . "</script>";
+  echo "<script>" . "window.location.href='../certificates'" . "</script>";
   exit;
 }
 
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               $_SESSION["loggedin"] = TRUE;
 
               # Redirect user to index page
-              echo "<script>" . "window.location.href='../'" . "</script>";
+              echo "<script>" . "window.location.href='../certificates'" . "</script>";
               exit;
             } else {
               # If password is incorrect show an error message
@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <label for="togglePassword" class="form-check-label">Ver senha</label>
             </div>
             <div class="mb-3">
-              <input type="submit" class="btn btn-primary form-control" name="submit" value="Entrar">
+              <input type="submit" class="btn btn-primary form-control button" name="submit" value="Entrar">
             </div>
             <p class="mb-0">Não tem uma conta? <a href="../register">Inscrever-se</a></p>
           </form>
