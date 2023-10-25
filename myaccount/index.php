@@ -107,11 +107,11 @@ require_once "../config.php";
             </div>
             <div class="mb-2">
               <label for="password" class="form-label">Senha</label>
-              <input type="password" class="form-control" name="password" id="password" value="<?= $password; ?>">
+              <input type="password" class="form-control" name="password" id="password" >
             </div>
             <div class="mb-2">
               <label for="password" class="form-label">Confirme a Senha</label>
-              <input type="password" class="form-control" name="passwordCheck" id="password" value="<?= $password; ?>">
+              <input type="password" class="form-control" name="passwordCheck" id="password" >
             </div>
            
             <div class="mb-3">
