@@ -30,6 +30,10 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <link rel="stylesheet" href="./css/main.css">
   <link rel="shortcut icon" href="./img/favicon-16x16.png" type="image/x-icon">
+  <!-- Adsense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030"
+  crossorigin="anonymous"></script>
+  <!-- Adsense -->
 </head>
 
 <body>
@@ -37,7 +41,19 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
   <?php if ($certificate) : ?>
     <section class="features" style="text-align: center;">
       <div>
-        Google AdSense
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030" crossorigin="anonymous"></script>
+        <!-- Adsense -->
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-6667247105321030"
+          data-ad-slot="8805526510"
+          data-ad-format="auto"
+          data-full-width-responsive="true">
+        </ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <!-- Adsense -->
       </div>
       <div>
       <?php 
@@ -56,7 +72,18 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
           ?>
       </div>
       <div>
-        Google AdSense
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030" crossorigin="anonymous"></script>
+        <!-- Adsense2 -->
+        <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-6667247105321030"
+        data-ad-slot="2004314442"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        <!-- Adsense2 -->
       </div>
     </section>
   <?php endif; ?>

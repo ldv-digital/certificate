@@ -100,6 +100,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="stylesheet" href="../css/main.css">
   <link rel="shortcut icon" href="../img/favicon-16x16.png" type="image/x-icon">
   <script defer src="../js/script.js"></script>
+  <!-- Adsense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030"
+  crossorigin="anonymous"></script>
+  <!-- Adsense -->
 </head>
 
 <body>
