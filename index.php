@@ -41,7 +41,19 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
   <?php if ($certificate) : ?>
     <section class="features" style="text-align: center;">
       <div>
-        Google AdSense
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030" crossorigin="anonymous"></script>
+        <!-- Adsense -->
+        <ins class="adsbygoogle"
+          style="display:block"
+          data-ad-client="ca-pub-6667247105321030"
+          data-ad-slot="8805526510"
+          data-ad-format="auto"
+          data-full-width-responsive="true">
+        </ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <!-- Adsense -->
       </div>
       <div>
       <?php 
@@ -60,7 +72,18 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
           ?>
       </div>
       <div>
-        Google AdSense
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030" crossorigin="anonymous"></script>
+        <!-- Adsense2 -->
+        <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-6667247105321030"
+        data-ad-slot="2004314442"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        <!-- Adsense2 -->
       </div>
     </section>
   <?php endif; ?>
