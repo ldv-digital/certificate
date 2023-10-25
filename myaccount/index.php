@@ -95,7 +95,7 @@ require_once "../config.php";
     <div class="row justify-content-center">
       <div class="col-lg-5 text-center">
         
-        <h4 class="my-4">Olá, <?=$userName; ?></h4>
+        <h4 class="my-4">Olá, <?=$userName;?></h4>
         <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
             <div class="mb-3">
               <label for="username" class="form-label">Nome de Usuário</label>
@@ -103,7 +103,7 @@ require_once "../config.php";
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" id="email" value="<?= $row[email]; ?>" disabled="disabled">
+              <input type="email" class="form-control" id="email" value="<?=$row['email'];?>" disabled="disabled">
             </div>
             <div class="mb-2">
               <label for="password" class="form-label">Senha</label>
