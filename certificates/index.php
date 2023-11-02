@@ -1,13 +1,9 @@
 <?php
-# Include connection
 require_once "../config.php";
-
-# Initialize the session
 session_start();
 
-# If user is not logged in then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== TRUE) {
-  echo "<script>" . "window.location.href='../login';" . "</script>";
+  header("Location: ../login");
   exit;
 }
 
@@ -17,99 +13,72 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
   if (isset($_POST['remove-file']) && !empty($_POST['remove-file'])) {
-    $idCertificate =  $_POST['remove-file'];
-    $teste = $link->query("DELETE FROM certificates WHERE id = $idCertificate");
-    mysqli_close($link);
-    echo "<script>" . "window.location.href='../certificates?s_msg=Imagem removida com sucesso!!'" . "</script>";
-    exit;
-  } else {
-
-    $target_dir = "../uploads/";
-    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-    if ($imageFileType) {
-      $timeNOw = time();
-      $mageName = "{$idUser}-{$timeNOw}.{$imageFileType}";
-      $target_file = $target_dir . $mageName;
-    }
-
-    // Check if file already exists
-    if (file_exists($target_file)) {
-      echo "Sorry, file already exists.";
-      $uploadOk = 0;
-    }
-
-    // Check file size
-    if ($_FILES["fileToUpload"]["size"] > 5000000) {
-      echo "Sorry, your file is too large.";
-      $uploadOk = 0;
-    }
-
-    // Allow certain file formats
-    if (
-      $imageFileType != "jpg"
-      && $imageFileType != "png"
-      && $imageFileType != "jpeg"
-      && $imageFileType != "pdf"
-      && $imageFileType != "webp"
-    ) {
-      echo "Sorry, only JPG, JPEG, PNG, WEBP & PDF files are allowed.";
-      $uploadOk = 0;
-    }
-
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-      echo "Sorry, your file was not uploaded.";
-      // if everything is ok, try to upload file
+    $idCertificate = (int)$_POST['remove-file'];
+    $stmt = mysqli_prepare($link, "DELETE FROM certificates WHERE id = ?");
+    mysqli_stmt_bind_param($stmt, "i", $idCertificate);
+    if (mysqli_stmt_execute($stmt)) {
+      mysqli_stmt_close($stmt);
+      header("Location: ../certificates?s_msg=Imagem removida com sucesso!!");
+      exit;
     } else {
-      $msg = "erro ao cadastrar";
-      if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+      header("Location: ../certificates?e_msg=Erro ao remover a imagem.");
+      exit;
+    }
+  } else {
+    $target_dir = "../uploads/";
+    $imageFileType = strtolower(pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION));
+    $timeNow = time();
+    $imageName = "{$idUser}-{$timeNow}.{$imageFileType}";
+    $target_file = $target_dir . $imageName;
+    $uploadOk = 1;
 
-        //success upload
-        if (!empty($mageName)) {
+    // Validate file size
+    if ($_FILES["fileToUpload"]["size"] > 500000) {
+      header("Location: ../certificates?e_msg=Tamanho do arquivo muito grande.");
+      exit;
+    }
 
-          # Prepare an insert statement
-          $sql = "INSERT INTO `certificates`(`id_user`, `image`) VALUES ('$idUser','$mageName')";
+    // Allow specific file formats
+    $allowedFormats = array("jpg", "jpeg", "png", "pdf", "webp");
+    if (!in_array($imageFileType, $allowedFormats)) {
+      header("Location: ../certificates?e_msg=Somente arquivos JPG, JPEG, PNG, WEBP e PDF são permitidos.");
+      exit;
+    }
 
-          if ($stmt = mysqli_prepare($link, $sql)) {
-            # Execute the prepared statement
-            if (mysqli_stmt_execute($stmt)) {
-              $msg = "sucesso ao cadastrar";
-            }
+    if (file_exists($target_file)) {
+      header("Location: ../certificates?e_msg=O arquivo já existe.");
+      exit;
+    }
 
-            # Close statement
-            mysqli_stmt_close($stmt);
-          }
-
-          # Close connection
-          mysqli_close($link);
-        }
-        //success upload
-        echo "<script>" . "window.location.href='../certificates?s_msg=$msg'" . "</script>";
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+      $stmt = mysqli_prepare($link, "INSERT INTO certificates (id_user, image) VALUES (?, ?)");
+      mysqli_stmt_bind_param($stmt, "is", $idUser, $imageName);
+      if (mysqli_stmt_execute($stmt)) {
+        mysqli_stmt_close($stmt);
+        header("Location: ../certificates?s_msg=Sucesso ao cadastrar");
+        exit;
       } else {
-        echo "<script>" . "window.location.href='../certificates?e_msg=$msg'" . "</script>";
+        header("Location: ../certificates?e_msg=Erro ao cadastrar");
+        exit;
       }
-
+    } else {
+      header("Location: ../certificates?e_msg=Erro ao fazer o upload do arquivo");
       exit;
     }
   }
 }
 
 $myCertificates = [];
+
 if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
   $idUser = $_SESSION["id"];
   $myCertificates = $link->query("SELECT * FROM certificates WHERE id_user = $idUser");
   mysqli_close($link);
 }
 
-//listar certificados
-
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -122,17 +91,13 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/main.css">
   <link rel="shortcut icon" href="../img/favicon-16x16.png" type="image/x-icon">
-  <!-- Adsense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030"
-  crossorigin="anonymous"></script>
-  <!-- Adsense -->
 </head>
 
 <body>
 
   <div class="sidebar">
     <div>
-      <img src="../img/imgLogo.png" alt="logo do site" />
+      <img src="../img/new-logo.png" alt="foto do usuário" />
     </div>
     <a href="../certificates">
       <img class="icons" src="../img/iconHome.png" />
@@ -153,54 +118,43 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
   </div>
   <div class="content">
     <?php if (isset($_REQUEST['s_msg']) && !empty($_REQUEST['s_msg'])) : ?>
-      <div class="alert alert-success my-3">
+      <div class="alert alert-success my-5">
         <?= $_REQUEST['s_msg'] ?>
       </div>
     <?php endif; ?>
+    <?php if (isset($_REQUEST['e_msg']) && !empty($_REQUEST['e_msg'])) : ?>
+      <div class="alert alert-error my-5">
+        <?= $_REQUEST['e_msg'] ?>
+      </div>
+    <?php endif; ?>
 
-    <form class="my-2" method="post" enctype="multipart/form-data">
-      <input class="inputEnv" type="file" name="fileToUpload" id="fileToUpload">
-      <input class="inputEnv2" type="submit" value="Enviar" name="submit">
+    <form method="post" enctype="multipart/form-data">
+      Selecione seu Certificado:
+      <input type="file" name="fileToUpload" id="fileToUpload">
+      <input type="submit" value="Upload Image" name="submit">
     </form>
+
+
+
+
 
     <table class="table-certificate">
       <tr>
-        <th>Meus Certificados</th>
+        <th>id</th>
+        <th>name</th>
         <th></th>
         <th></th>
       </tr>
 
       <?php foreach ($myCertificates as $item) : ?>
         <tr>
-          
-          <td>
-            <?php 
-        
-              $pos = strpos(  $item['image'], '.pdf' );
-
-              if($pos):
-            ?>
-              <iframe class="iframe1" src="../uploads/<?= $item['image'] ?>" frameborder="0"></iframe>  
-
-
-            <?php 
-              else:
-            ?>
-
-              <img src="../uploads/<?= $item['image'] ?>">
-
-            <?php 
-              endif; 
-            ?>
-
-
-
-          </td>
-          <td> <a href="/?id=<?= base64_encode($item['id']) ?>" target="_blank" class="btn-grid">Visualizar</a> </td>
+          <td><?= $item['id'] ?></td>
+          <td><img src="../uploads/<?= $item['image'] ?>"></td>
+          <td> <a href="/?id=<?= base64_encode($item['id']) ?>" target="_blank">Visualizar</a> </td>
           <td>
             <form method="post" enctype="multipart/form-data">
               <input type="hidden" name="remove-file" value="<?= $item['id'] ?>">
-              <input class="btn-grid-del" type="submit" value="Remover" name="submit">
+              <input type="submit" value="remover" name="submit">
             </form>
           </td>
         </tr>
