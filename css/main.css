@@ -55,33 +55,33 @@ button:disabled {
 .sidebar {
   margin: 0;
   padding: 0;
-  background: #0d6efd;
+  background: #111111b5;
   position: fixed;
   height: 100%;
   overflow: auto;
   width: 200px;
 }
 
-.sidebar div{
+.sidebar div {
   background: #efefef;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 150px;
-  border-right: 1px solid #0d6efd;
+  border-right: 1px solid #111111b5;
 }
 
 
 .sidebar div {
-  padding-top: 18px;
+  padding-top: 0;
+  margin-bottom: 50px;
 }
 
 .sidebar div img {
-  width: 200px;
-  height: 120px;
   display: block;
   margin: 0 auto;
   object-fit: cover;
+  width: 100%;
 }
 
 .sidebar a {
@@ -118,8 +118,8 @@ button:disabled {
 }
 
 
-.sidebar a:hover, .button:hover{
-  background:linear-gradient(#0a58ca, #04419c) ;
+.sidebar a:hover, .button:hover {
+  background: linear-gradient(#0a58ca, #04419c);
   color: #fff;
 }
 
@@ -192,11 +192,11 @@ table.table-certificate img {
   width: 100px;
 }
 
-.iframe1{
+.iframe1 {
   width: 100px;
 }
 
-input:disabled{
+input:disabled {
   cursor: not-allowed;
 }
 
@@ -208,43 +208,43 @@ input:disabled{
   margin: 0;
 }
 
-.inputEnv{
+.inputEnv {
   padding: 7px 10px;
-  background:linear-gradient(#0a58ca, #04419c) ;
+  background: linear-gradient(#0a58ca, #04419c);
   color: #fff;
   border: 0;
 }
 
-.inputEnv:hover{
-  background:linear-gradient(#04419c, #0a58ca) ;
+.inputEnv:hover {
+  background: linear-gradient(#04419c, #0a58ca);
   color: #fff;
   border: 0;
   cursor: pointer;
 }
 
-.inputEnv2{
+.inputEnv2 {
   padding: 8px 10px;
   background: #dad8d8;
   color: #000;
   border: 0;
 }
 
-.inputEnv2:hover{
-  background:linear-gradient(#0a58ca, #04419c) ;
+.inputEnv2:hover {
+  background: linear-gradient(#0a58ca, #04419c);
   color: #fff;
   border: 0;
   cursor: pointer;
 }
 
 
-.btn-grid{
+.btn-grid {
   padding: 10px 20px;
   background: #efefef;
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.15);
   color: #000;
 }
 
-.btn-grid-del{
+.btn-grid-del {
   padding: 7.5px 20px;
   background: #efefef;
   border: 0;
@@ -252,13 +252,13 @@ input:disabled{
   color: #000;
 }
 
-.btn-grid:hover{
+.btn-grid:hover {
   cursor: pointer;
-  background:linear-gradient(#0a58ca, #04419c) ;
+  background: linear-gradient(#0a58ca, #04419c);
   color: #fff;
 }
 
-.btn-grid-del:hover{
+.btn-grid-del:hover {
   cursor: pointer;
   background: linear-gradient(#fa0707cc, #bd0101cc);
   color: #fff;

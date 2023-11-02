@@ -1,93 +1,92 @@
 <?php
-# Initialize session
+# Inicializa a sessão
 session_start();
 
-# Check if user is already logged in, If yes then redirect him to index page
+# Verifica se o usuário já está logado; se sim, redireciona-o para a página de certificates
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
   echo "<script>" . "window.location.href='../certificates'" . "</script>";
   exit;
 }
 
-# Include connection
+# Inclui a conexão com o banco de dados
 require_once "../config.php";
 
-# Define variables and initialize with empty values
+# Define variáveis e inicializa com valores vazios
 $user_login_err = $user_password_err = $login_err = "";
 $user_login = $user_password = "";
 
-# Processing form data when form is submitted
+# Processa os dados do formulário quando o formulário é enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty(trim($_POST["user_login"]))) {
-    $user_login_err = "Please enter your username or an email id.";
+    $user_login_err = "Por favor, insira seu nome de usuário ou um endereço de e-mail.";
   } else {
     $user_login = trim($_POST["user_login"]);
   }
 
   if (empty(trim($_POST["user_password"]))) {
-    $user_password_err = "Please enter your password.";
+    $user_password_err = "Por favor, insira sua senha.";
   } else {
     $user_password = trim($_POST["user_password"]);
   }
 
-  # Validate credentials 
+  # Valida as credenciais
   if (empty($user_login_err) && empty($user_password_err)) {
-    # Prepare a select statement
+    # Prepara uma declaração SELECT
     $sql = "SELECT id, username, password FROM users WHERE username = ? OR email = ?";
 
     if ($stmt = mysqli_prepare($link, $sql)) {
-      # Bind variables to the statement as parameters
+      # Associa as variáveis à declaração como parâmetros
       mysqli_stmt_bind_param($stmt, "ss", $param_user_login, $param_user_login);
 
-      # Set parameters
+      # Define os parâmetros
       $param_user_login = $user_login;
 
-      # Execute the statement
+      # Executa a declaração
       if (mysqli_stmt_execute($stmt)) {
-        # Store result
+        # Armazena o resultado
         mysqli_stmt_store_result($stmt);
 
-        # Check if user exists, If yes then verify password
+        # Verifica se o usuário existe; se sim, verifica a senha
         if (mysqli_stmt_num_rows($stmt) == 1) {
-          # Bind values in result to variables
+          # Associa os valores do resultado às variáveis
           mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
 
           if (mysqli_stmt_fetch($stmt)) {
-            # Check if password is correct
+            # Verifica se a senha está correta
             if (password_verify($user_password, $hashed_password)) {
 
-              # Store data in session variables
+              # Armazena os dados nas variáveis de sessão
               $_SESSION["id"] = $id;
               $_SESSION["username"] = $username;
               $_SESSION["loggedin"] = TRUE;
 
-              # Redirect user to index page
+              # Redireciona o usuário para a página de certificates
               echo "<script>" . "window.location.href='../certificates'" . "</script>";
               exit;
             } else {
-              # If password is incorrect show an error message
-              $login_err = "The email or password you entered is incorrect.";
+              # Se a senha estiver incorreta, exibe uma mensagem de erro
+              $login_err = "O e-mail ou senha que você digitou está incorreto.";
             }
           }
         } else {
-          # If user doesn't exists show an error message
-          $login_err = "Invalid username or password.";
+          # Se o usuário não existir, exibe uma mensagem de erro
+          $login_err = "Nome de usuário ou senha inválidos.";
         }
       } else {
-        echo "<script>" . "alert('Oops! Something went wrong. Please try again later.');" . "</script>";
+        echo "<script>" . "alert('Ops! Algo deu errado. Por favor, tente novamente mais tarde.');" . "</script>";
         echo "<script>" . "window.location.href='../login'" . "</script>";
         exit;
       }
 
-      # Close statement
+      # Fecha a declaração
       mysqli_stmt_close($stmt);
     }
   }
 
-  # Close connection
+  # Fecha a conexão com o banco de dados
   mysqli_close($link);
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -101,8 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="shortcut icon" href="../img/favicon-16x16.png" type="image/x-icon">
   <script defer src="../js/script.js"></script>
   <!-- Adsense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030"
-  crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030" crossorigin="anonymous"></script>
   <!-- Adsense -->
 </head>
 
