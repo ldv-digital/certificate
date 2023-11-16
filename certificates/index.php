@@ -130,8 +130,8 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
 
     <form method="post" enctype="multipart/form-data">
       Selecione seu Certificado:
-      <input type="file" name="fileToUpload" id="fileToUpload">
-      <input type="submit" value="Upload Image" name="submit">
+      <input class="inputEnv" type="file" name="fileToUpload" id="fileToUpload">
+      <input class="inputEnv2" type="submit" value="Enviar Certificado" name="submit">
     </form>
 
 
@@ -150,11 +150,11 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
         <tr>
           <td><?= $item['id'] ?></td>
           <td><img src="../uploads/<?= $item['image'] ?>"></td>
-          <td> <a href="/?id=<?= base64_encode($item['id']) ?>" target="_blank">Visualizar</a> </td>
+          <td> <a class="btn-grid" href="/?id=<?= base64_encode($item['id']) ?>" target="_blank">Visualizar</a> </td>
           <td>
             <form method="post" enctype="multipart/form-data">
               <input type="hidden" name="remove-file" value="<?= $item['id'] ?>">
-              <input type="submit" value="remover" name="submit">
+              <input class="btn-grid-del" type="submit" value="remover" name="submit">
             </form>
           </td>
         </tr>

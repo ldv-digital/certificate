@@ -98,6 +98,17 @@ button:disabled {
 
 }
 
+.btn{
+  background: #111111b5;
+  border: 0;
+}
+
+.btn:hover{
+  background: linear-gradient(#111111b5, rgba(29, 33, 39, 0.637));
+  border: 0;
+}
+
+
 .btnClosed {
   display: block;
   padding: 16px;
@@ -119,7 +130,7 @@ button:disabled {
 
 
 .sidebar a:hover, .button:hover {
-  background: linear-gradient(#0a58ca, #04419c);
+  background: linear-gradient(#111111b5, rgba(29, 33, 39, 0.637));
   color: #fff;
 }
 
@@ -210,13 +221,13 @@ input:disabled {
 
 .inputEnv {
   padding: 7px 10px;
-  background: linear-gradient(#0a58ca, #04419c);
+  background: linear-gradient(#111111b5, rgba(29, 33, 39, 0.637));
   color: #fff;
   border: 0;
 }
 
 .inputEnv:hover {
-  background: linear-gradient(#04419c, #0a58ca);
+  background: linear-gradient(rgba(29, 33, 39, 0.637), #111111b5);
   color: #fff;
   border: 0;
   cursor: pointer;
@@ -230,7 +241,7 @@ input:disabled {
 }
 
 .inputEnv2:hover {
-  background: linear-gradient(#0a58ca, #04419c);
+  background: linear-gradient(#111111b5, rgba(29, 33, 39, 0.637));
   color: #fff;
   border: 0;
   cursor: pointer;
@@ -254,7 +265,7 @@ input:disabled {
 
 .btn-grid:hover {
   cursor: pointer;
-  background: linear-gradient(#0a58ca, #04419c);
+  background: linear-gradient(#111111b5, rgba(29, 33, 39, 0.637));
   color: #fff;
 }
 
