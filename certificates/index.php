@@ -90,7 +90,7 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
   <title>Certificados</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/main.css">
-  <link rel="shortcut icon" href="../img/favicon-16x16.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../img/new-logo.png" type="image/x-icon">
 </head>
 
 <body>
