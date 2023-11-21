@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $uploadOk = 1;
 
     // Validate file size
-    if ($_FILES["fileToUpload"]["size"] > 500000) {
+    if ($_FILES["fileToUpload"]["size"] > 5000000) {
       header("Location: ../certificates?e_msg=Tamanho do arquivo muito grande.");
       exit;
     }
@@ -149,7 +149,26 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
       <?php foreach ($myCertificates as $item) : ?>
         <tr>
           <td><?= $item['id'] ?></td>
-          <td><img src="../uploads/<?= $item['image'] ?>"></td>
+          <td>
+          <?php 
+
+              $pos = strpos(  $item['image'], '.pdf' );
+
+              if($pos):
+            ?>
+              <iframe class="iframe1" src="../uploads/<?= $item['image'] ?>" frameborder="0"></iframe>  
+
+
+            <?php 
+              else:
+            ?>
+
+              <img src="../uploads/<?= $item['image'] ?>">
+
+            <?php 
+              endif; 
+            ?>  
+          </td>
           <td> <a class="btn-grid" href="/?id=<?= base64_encode($item['id']) ?>" target="_blank">Visualizar</a> </td>
           <td>
             <form method="post" enctype="multipart/form-data">
