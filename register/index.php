@@ -174,7 +174,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="mb-3">
               <input type="submit" class="btn btn-primary form-control button" name="submit" value="Cadastrar">
             </div>
-            <p class="mb-0">Já tem uma conta ? <a href="../login">Fazer Login</a></p>
+            <p class="mb-0">Já tem uma conta ? <a href="../index.php">Fazer Login</a></p>
           </form>
         
         </div>
