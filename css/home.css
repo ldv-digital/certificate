@@ -405,6 +405,7 @@ form.sign-in-form {
 
 .description-certificate p {
     padding: 0;
+    margin: 0;
 }
 
 .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
