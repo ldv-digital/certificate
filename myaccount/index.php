@@ -13,11 +13,14 @@ require_once "../config.php";
 
 function updateProfile($link, $id, $username, $password = null)
 {
-  if ($password !== null) {
+
+  if (!empty($password)) {
+
     $stmt = mysqli_prepare($link, "UPDATE `users` SET `username`=?, `password`=? WHERE `id`=?");
     $param_password = password_hash($password, PASSWORD_DEFAULT);
     mysqli_stmt_bind_param($stmt, "ssi", $username, $param_password, $id);
   } else {
+
     $stmt = mysqli_prepare($link, "UPDATE `users` SET `username`=? WHERE `id`=?");
     mysqli_stmt_bind_param($stmt, "si", $username, $id);
   }
@@ -74,7 +77,7 @@ mysqli_close($link);
 
   <div class="sidebar">
     <div>
-      <img src="../img/log.svg" alt="logo do site LDV Digital" />
+      <img src="../img/log.svg" alt="foto do usuário" />
     </div>
     <a href="../certificates">
       <img class="icons" src="../img/iconHome.png" />
