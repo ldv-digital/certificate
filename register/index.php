@@ -110,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <link rel="stylesheet" type="text/css" href="../css/home.css">
   <link rel="shortcut icon" href="../img/log.svg" type="image/x-icon">
   <script defer src="../js/script.js"></script>
-  <script src="./js/fontawesome.js"></script>
+  <script src="../js/fontawesome.js"></script>
   <!-- Adsense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030" crossorigin="anonymous"></script>
   <!-- Adsense -->
@@ -159,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <p>Gere um link exclusivo para o LinkedIn.</p>
           <p>Compartilhe seu sucesso profissional com o mundo!</p>
         </div>
-        <img src="./img/log.svg" class="image" alt="">
+        <img src="../img/log.svg" class="image" alt="">
       </div>
 
     </div>
