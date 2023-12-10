@@ -147,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php
         else :
         ?>
-          <img src="<?= $certificate ?>" alt="Certificados" />
+          <img style="width: 100%;" src="<?= $certificate ?>" alt="Certificados" />
         <?php
         endif;
         ?>

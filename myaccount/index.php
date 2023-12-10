@@ -77,7 +77,7 @@ mysqli_close($link);
 
   <div class="sidebar">
     <div>
-      <img src="../img/log.svg" alt="foto do usuário" />
+      <img src="../img/log.svg" alt="logo do site LDV Digital" />
     </div>
     <a href="../certificates">
       <img class="icons" src="../img/iconHome.png" />
