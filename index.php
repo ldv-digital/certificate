@@ -17,16 +17,12 @@ if (isset($_REQUEST['id']) && !empty($_REQUEST['id'])) {
   }
 }
 
-?>
 
-
-
-<?php
 # Inicializa a sessão
 session_start();
 
 # Verifica se o usuário já está logado; se sim, redireciona-o para a página de certificates
-if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE) {
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] == TRUE && empty($certificate)) {
   echo "<script>" . "window.location.href='./certificates'" . "</script>";
   exit;
 }
@@ -114,159 +110,154 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="pt-BR">
 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1" />
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-    <meta http-equiv="cache-control" content="no-cache,no-store" />
-    <meta http-equiv="pragma" content="no-cache" />
-    <meta http-equiv="expires" content="-1" />
-    <meta name='mswebdialog-title' content='Connecting to Portal Alunos' />
-
-    <title>Certificados</title>
-
-
-    <link rel="stylesheet" type="text/css"
-        href="./css/home.css">
-   
-
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1" />
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta http-equiv="cache-control" content="no-cache,no-store" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="expires" content="-1" />
+  <meta name='mswebdialog-title' content='Connecting to Portal Alunos' />
+  <title>Certificados</title>
+  <link rel="stylesheet" type="text/css" href="./css/home.css">
+  <script src="./js/fontawesome.js"></script>
 </head>
 
 <?php if ($certificate) : ?>
+
   <body>
-      <section class="features" style="text-align: center;">
-        <div>
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030" crossorigin="anonymous"></script>
-          <!-- Adsense -->
-          <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-6667247105321030"
-            data-ad-slot="8805526510"
-            data-ad-format="auto"
-            data-full-width-responsive="true">
-          </ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-          <!-- Adsense -->
+    <section class="features" style="text-align: center;">
+      <div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030" crossorigin="anonymous"></script>
+        <!-- Adsense -->
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6667247105321030" data-ad-slot="8805526510" data-ad-format="auto" data-full-width-responsive="true">
+        </ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <!-- Adsense -->
+      </div>
+      <div>
+        <?php
+
+        $pos = strpos($certificate, '.pdf');
+
+        if ($pos) :
+        ?>
+          <iframe class="iframe2" src="<?= $certificate ?>" frameborder="0"></iframe>
+        <?php
+        else :
+        ?>
+          <img src="<?= $certificate ?>" alt="Certificados" />
+        <?php
+        endif;
+        ?>
+      </div>
+      <div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030" crossorigin="anonymous"></script>
+        <!-- Adsense2 -->
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6667247105321030" data-ad-slot="2004314442" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <!-- Adsense2 -->
+      </div>
+    </section>
+  </body>
+<?php endif; ?>
+
+
+
+<?php if (!$certificate) : ?>
+
+  <body>
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form action="" method="post" novalidate class="sign-in-form">
+            <h2 class="title">Entrar</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" name="user_login" id="user_login" value="<?= $user_login; ?>" placeholder="E-mail" />
+              <small class="text-danger"><?= $user_login_err; ?></small>
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" name="user_password" id="password" placeholder="Senha" />
+              <small class="text-danger"><?= $user_password_err; ?></small>
+            </div>
+            <input type="submit" value="Login" class="btn solid" />
+            <p class="social-text">Nossa plataforma é 100% gratuita e sem custos ocultos.</p>
+            <div class="social-media">
+              <p class="mb-0">Não tem uma conta? <a href="./register">Inscrever-se</a></p>
+            </div>
+          </form>
         </div>
-        <div>
-        <?php 
-              
-              $pos = strpos( $certificate, '.pdf' );
-  
-              if($pos):
-            ?>
-              <iframe class="iframe2" src="<?= $certificate ?>" frameborder="0"></iframe>  
-            <?php 
-              else:
-            ?>
-              <img src="<?= $certificate ?>" alt="Certificados" />
-            <?php 
-              endif; 
-            ?>
+      </div>
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content description-certificate">
+            <h2>Gere seu Link para o LinkedIn</h2>
+            <p>Compartilhe seus certificados no LinkedIn em poucos passos simples:</p>
+            <p>Crie sua conta em nossa plataforma.</li>
+            <p>Carregue seu certificado.</p>
+            <p>Gere um link exclusivo para o LinkedIn.</p>
+            <p>Compartilhe seu sucesso profissional com o mundo!</p>
+          </div>
+          <img src="./img/log.svg" class="image" alt="">
         </div>
-        <div>
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030" crossorigin="anonymous"></script>
-          <!-- Adsense2 -->
-          <ins class="adsbygoogle"
-          style="display:block"
-          data-ad-client="ca-pub-6667247105321030"
-          data-ad-slot="2004314442"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-          <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-          <!-- Adsense2 -->
+
+      </div>
+    </div>
+
+    <?php if (isset($_REQUEST['s']) && !empty($_REQUEST['s'])) : ?>
+      <div class="toast">
+        <div class="toast-content">
+          <i class="fas fa-solid fa-check check"></i>
+
+          <div class="message">
+            <span class="text text-1">Sucesso</span>
+            <span class="text text-2">Registro concluído com sucesso</span>
+          </div>
         </div>
-      </section>
-      </body>
+        <i class="fa-solid fa-xmark close"></i>
+
+        <div class="progress"></div>
+      </div>
+
+      <script>
+        const toast = document.querySelector(".toast"),
+          closeIcon = document.querySelector(".close"),
+          progress = document.querySelector(".progress");
+
+        let timer1, timer2;
+
+        toast.classList.add("active");
+        progress.classList.add("active");
+
+        timer1 = setTimeout(() => {
+          toast.classList.remove("active");
+        }, 5000); //1s = 1000 milliseconds
+
+        timer2 = setTimeout(() => {
+          progress.classList.remove("active");
+        }, 5300);
+
+
+        closeIcon.addEventListener("click", () => {
+          toast.classList.remove("active");
+
+          setTimeout(() => {
+            progress.classList.remove("active");
+          }, 300);
+
+          clearTimeout(timer1);
+          clearTimeout(timer2);
+        });
+      </script>
     <?php endif; ?>
 
+  </body>
 
-
-    <?php if (!$certificate) : ?>
-<body dir="ltr" class="body">
-    
-    <div id="fullPage">
-        <div id="brandingWrapper" class="float">
-            <section class="features">
-                <h2>Nossas Facilidades</h2>
-                <ul>
-                  <li>
-                    <h3>Compartilhamento Simples</h3>
-                    <p>Compartilhe seus certificados facilmente no LinkedIn.</p>
-                  </li>
-                  <li>
-                    <h3>Acesso Gratuito</h3>
-                    <p>Nossa plataforma é 100% gratuita e sem custos ocultos.</p>
-                  </li>
-                </ul>
-              </section>
-          
-              <section class="generate-link">
-                <h2>Gere seu Link para o LinkedIn</h2>
-                <p>Compartilhe seus certificados no LinkedIn em poucos passos simples:</p>
-                <ol>
-                  <li>Crie sua conta em nossa plataforma.</li>
-                  <li>Carregue seu certificado.</li>
-                  <li>Gere um link exclusivo para o LinkedIn.</li>
-                  <li>Compartilhe seu sucesso profissional com o mundo!</li>
-                </ol>
-              </section>
-          
-        </div>
-        <div id="contentWrapper" class="float">
-            <div id="content">
-                <div id="header">
-                    <img class='logoImage' id='companyLogo'
-                        src='./img/new-logo.png'
-                        alt='Logo site LDV' 
-                        width="80"/>
-                </div>
-                <div id="workArea">
-
-                    <div id="authArea" class="groupMargin">
-
-                        <div id="loginArea">
-
-                            <form action="<?= htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" novalidate>
-                                <div class="mb-3">
-                                  <label for="user_login" class="form-label">Email</label>
-                                  <input type="text" class="form-control" name="user_login" id="user_login" value="<?= $user_login; ?>">
-                                  <small class="text-danger"><?= $user_login_err; ?></small>
-                                </div>
-                                <div class="mb-2">
-                                  <label for="password" class="form-label">Senha</label>
-                                  <input type="password" class="form-control" name="user_password" id="password">
-                                  <small class="text-danger"><?= $user_password_err; ?></small>
-                                </div>
-                                <div class="mb-3">
-                                  <input type="submit" class="btn btn-primary form-control button" name="submit" value="Entrar">
-                                </div>
-                                <p class="mb-0">Não tem uma conta? <a href="./register">Inscrever-se</a></p>
-                              </form>
-
-                            
-                           
-                        </div>
-
-                    </div>
-
-                </div>
-                <div id="footerPlaceholder"></div>
-            </div>
-            <div id="footer">
-                <div id="footerLinks" class="floatReverse">
-                    <div><span id="copyright">&#169; 2016 Microsoft</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-
-
-</body>
 <?php endif; ?>
 
 </html>

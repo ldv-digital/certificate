@@ -64,7 +64,7 @@ mysqli_close($link);
   <title>User login system</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/main.css">
-  <link rel="shortcut icon" href="../img/new-logo.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../img/log.svg" type="image/x-icon">
   <!-- Adsense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030" crossorigin="anonymous"></script>
   <!-- Adsense -->
@@ -74,7 +74,7 @@ mysqli_close($link);
 
   <div class="sidebar">
     <div>
-      <img src="../img/new-logo.png" alt="foto do usuário" />
+      <img src="../img/log.svg" alt="logo do site LDV Digital" />
     </div>
     <a href="../certificates">
       <img class="icons" src="../img/iconHome.png" />
