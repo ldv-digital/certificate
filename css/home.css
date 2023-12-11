@@ -279,7 +279,7 @@ form.sign-in-form {
 
     .signin-signup {
         width: 100%;
-        top: 75%;
+        top: 95%;
         transform: translate(-50%, -100%);
         transition: 1s 0.8s ease-in-out;
     }
@@ -300,6 +300,7 @@ form.sign-in-form {
         align-items: center;
         padding: 1.5rem 8%;
         grid-column: 1 / 2;
+        background-color: #388cee;
     }
 
     .right-panel {
@@ -376,6 +377,10 @@ form.sign-in-form {
 }
 
 @media (max-width: 570px) {
+    body {
+        overflow: initial !important;
+    }
+
     form {
         padding: 0 1.5rem;
     }
@@ -390,11 +395,19 @@ form.sign-in-form {
 
     .container {
         padding: 1.5rem;
+        overflow: initial;
+        position: static;
+    }
+
+    .forms-container {
+        top: 183px;
+        background-color: #fff;
     }
 
     .container:before {
         bottom: 72%;
         left: 50%;
+        position: initial;
     }
 
     .container.sign-up-mode:before {
