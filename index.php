@@ -110,6 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="pt-BR">
 
 <head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030" crossorigin="anonymous"></script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1" />
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -127,16 +128,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <body>
     <section class="features" style="text-align: center;">
       <div>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030" crossorigin="anonymous"></script>
-        <!-- Adsense -->
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6667247105321030" data-ad-slot="8805526510" data-ad-format="auto" data-full-width-responsive="true">
-        </ins>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-        <!-- Adsense -->
-      </div>
-      <div>
         <?php
 
         $pos = strpos($certificate, '.pdf');
@@ -151,15 +142,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php
         endif;
         ?>
-      </div>
-      <div>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6667247105321030" crossorigin="anonymous"></script>
-        <!-- Adsense2 -->
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6667247105321030" data-ad-slot="2004314442" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-        <!-- Adsense2 -->
       </div>
     </section>
   </body>
