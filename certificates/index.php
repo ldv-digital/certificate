@@ -140,15 +140,15 @@ if (isset($_SESSION["id"]) && !empty($_SESSION["id"])) {
 
     <table class="table-certificate">
       <tr>
-        <th>id</th>
-        <th>name</th>
-        <th></th>
-        <th></th>
+        
+        <th>Nome Certificados</th>
+        <th>#</th>
+        <th>#</th>
       </tr>
 
       <?php foreach ($myCertificates as $item) : ?>
         <tr>
-          <td><?= $item['id'] ?></td>
+          
           <td>
             <?php
 

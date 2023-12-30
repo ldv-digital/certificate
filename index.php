@@ -119,12 +119,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta name='mswebdialog-title' content='Connecting to Portal Alunos' />
   <title>Certificados</title>
   <link rel="stylesheet" type="text/css" href="./css/home.css">
+  <link rel="stylesheet" type="text/css" href="./css/main.css">
   <script src="./js/fontawesome.js"></script>
 </head>
 
 <?php if ($certificate) : ?>
 
-  <body>
+  <body class="body-certificates">
     <section class="features" style="text-align: center;">
       <div>
         <?php
